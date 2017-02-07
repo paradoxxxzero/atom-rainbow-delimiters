@@ -10,16 +10,45 @@
 }
 
 .generate-rainbows(@n, @i: 1) when (@i =< @n) {
-  @hue: @i * 48;
+  @hue: @i * 55;
   @saturation: (90 - 10 * floor(@i / 10)) / 100;
   @luminosity: (50 - 10 * floor(@i / 10)) / 100;
   @color: hsl(@hue, @saturation, @luminosity);
 
-  .rainbow-@{i} .region {
+  .rainbow-@{i} .region:before {
     @slice: contrast(@syntax-background-color, tint(@color, @fade), shade(@color, @fade));
-    border-bottom: 1px solid @slice;
+    color: @slice;
+    // text-shadow: 0 0 10px @slice;
   }
   .generate-rainbows(@n, (@i + 1));
 }
 
 .generate-rainbows(@hues);
+
+atom-text-editor .rainbow .region {
+  z-index: 1000;
+}
+
+.rainbow-bco .region:before {
+    content: "{";
+}
+
+.rainbow-bcc .region:before {
+    content: "}";
+}
+
+.rainbow-bro .region:before {
+    content: "(";
+}
+
+.rainbow-brc .region:before {
+    content: ")";
+}
+
+.rainbow-bo .region:before {
+    content: "[";
+}
+
+.rainbow-bc .region:before {
+    content: "]";
+}
