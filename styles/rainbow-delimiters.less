@@ -1,31 +1,25 @@
+@import 'syntax-variables';
+
+@hues: 50;
+@saturation: 100%;
+@luminosity: 60%;
+@fade: 40%;
+
 .rainbow-error .region {
-  border: 1px solid red
+  border: 1px solid red;
 }
 
-.rainbow-1 .region {
-  border-bottom: 1px solid orangered
+.generate-rainbows(@n, @i: 1) when (@i =< @n) {
+  @hue: @i * 48;
+  @saturation: (90 - 10 * floor(@i / 10)) / 100;
+  @luminosity: (50 - 10 * floor(@i / 10)) / 100;
+  @color: hsl(@hue, @saturation, @luminosity);
+
+  .rainbow-@{i} .region {
+    @slice: contrast(@syntax-background-color, tint(@color, @fade), shade(@color, @fade));
+    border-bottom: 1px solid @slice;
+  }
+  .generate-rainbows(@n, (@i + 1));
 }
 
-.rainbow-2 .region {
-  border-bottom: 1px solid orange
-}
-
-.rainbow-3 .region {
-  border-bottom: 1px solid yellow
-}
-
-.rainbow-4 .region {
-  border-bottom: 1px solid green
-}
-
-.rainbow-5 .region {
-  border-bottom: 1px solid blue
-}
-
-.rainbow-6 .region {
-  border-bottom: 1px solid purple
-}
-
-.rainbow-7 .region {
-  border-bottom: 1px solid pink
-}
+.generate-rainbows(@hues);
