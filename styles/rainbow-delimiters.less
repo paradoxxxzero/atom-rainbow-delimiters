@@ -5,8 +5,10 @@
 @luminosity: 60%;
 @fade: 40%;
 
-.rainbow-error .region {
-  border: 1px solid red;
+
+.rainbow-error .region:before {
+  color: @syntax-color-removed;
+  text-decoration: underline;
 }
 
 .generate-rainbows(@n, @i: 1) when (@i =< @n) {
@@ -18,7 +20,6 @@
   .rainbow-@{i} .region:before {
     @slice: contrast(@syntax-background-color, tint(@color, @fade), shade(@color, @fade));
     color: @slice;
-    // text-shadow: 0 0 10px @slice;
   }
   .generate-rainbows(@n, (@i + 1));
 }
@@ -27,28 +28,29 @@
 
 atom-text-editor .rainbow .region {
   z-index: 1000;
+  font-weight: 500;
 }
 
-.rainbow-bco .region:before {
+.rainbow-char-123 .region:before {
     content: "{";
 }
 
-.rainbow-bcc .region:before {
+.rainbow-char-125 .region:before {
     content: "}";
 }
 
-.rainbow-bro .region:before {
+.rainbow-char-40 .region:before {
     content: "(";
 }
 
-.rainbow-brc .region:before {
+.rainbow-char-41 .region:before {
     content: ")";
 }
 
-.rainbow-bo .region:before {
+.rainbow-char-91 .region:before {
     content: "[";
 }
 
-.rainbow-bc .region:before {
+.rainbow-char-93 .region:before {
     content: "]";
 }
