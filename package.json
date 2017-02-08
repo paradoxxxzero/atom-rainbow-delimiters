@@ -1,7 +1,7 @@
 {
   "name": "rainbow-delimiters",
   "main": "./lib/rainbow-delimiters",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Highlight delimiters around your cursor.",
   "keywords": [],
   "repository": "https://github.com/paradoxxxzero/atom-rainbow-delimiters",
