@@ -7,10 +7,10 @@
   text-decoration: underline;
 }
 
-.generate-rainbows(@n, @i: 0) when (@i =< @n) {
+.generate-rainbows(@n, @i: 1) when (@i =< @n) {
   .rainbow-@{i} .region:before {
     @spins: floor(360 / @max);
-    @color: darken(spin(@syntax-accent, @i * @max), floor(@i / @spins) * 40 / @spins);
+    @color: darken(spin(@syntax-color-keyword, @i * @max), floor(@i / @spins) * 40 / @spins);
     color: @color;
   }
   .generate-rainbows(@n, (@i + 1));
