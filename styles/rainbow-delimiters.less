@@ -2,13 +2,20 @@
 
 @max: 60;
 
-.rainbow-error .region:before {
+.rainbow {
+  // Err... I don't know why we must do that... Anyway
+  // https://discuss.atom.io/t/creating-a-independent-cursor/14711
+  transform: translate(-100%, -100%);
+  font-weight: 500;
+}
+
+.rainbow-error {
   color: @syntax-color-removed;
   text-decoration: underline;
 }
 
 .generate-rainbows(@n, @i: 1) when (@i =< @n) {
-  .rainbow-@{i} .region:before {
+  .rainbow-@{i} {
     @spins: floor(360 / @max);
     @color: darken(spin(@syntax-color-keyword, @i * @max), floor(@i / @spins) * 40 / @spins);
     color: @color;
@@ -17,32 +24,3 @@
 }
 
 .generate-rainbows(@max);
-
-atom-text-editor .rainbow .region {
-  z-index: 1000;
-  font-weight: 500;
-}
-
-.rainbow-char-123 .region:before {
-    content: "{";
-}
-
-.rainbow-char-125 .region:before {
-    content: "}";
-}
-
-.rainbow-char-40 .region:before {
-    content: "(";
-}
-
-.rainbow-char-41 .region:before {
-    content: ")";
-}
-
-.rainbow-char-91 .region:before {
-    content: "[";
-}
-
-.rainbow-char-93 .region:before {
-    content: "]";
-}
