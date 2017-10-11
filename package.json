@@ -4,7 +4,7 @@
   "version": "1.3.0",
   "description": "Highlight delimiters around your cursor.",
   "keywords": [],
-  "repository": "https://github.com/paradoxxxzero/atom-rainbow-delimiters",
+  "repository": "git@github.com:paradoxxxzero/atom-rainbow-delimiters.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
