@@ -1,3 +1,6 @@
+## 2.0.1 - Fourth Release
+* Lower the overlay z-index to avoid overflow
+
 ## 2.0.0 - Third Release
 * Rewrite decoration using overlay (and a transform: translate(-100%, -100%)...). Fix #3
 
