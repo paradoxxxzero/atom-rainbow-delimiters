@@ -1,6 +1,8 @@
 @import 'syntax-variables';
 
-@max: 60;
+@max: 100;
+@step: 55;
+@spins: floor((@max * @step) / 360);
 
 .rainbow {
   // Err... I don't know why we must do that... Anyway
@@ -15,16 +17,22 @@
 }
 
 .rainbow-marker {
+  // Otherwise they are always visible
   z-index: 0 !important;
 }
 
-.generate-rainbows(@n, @i: 1) when (@i =< @n) {
-  .rainbow-@{i} {
-    @spins: floor(360 / @max);
-    @color: darken(spin(@syntax-color-keyword, @i * @max), floor(@i / @spins) * 40 / @spins);
-    color: @color;
-  }
-  .generate-rainbows(@n, (@i + 1));
+.tab-bar {
+  // To prevent decoration over tabs.
+  // I really hope that it doesn't break anything else.
+  z-index: 1;
 }
 
-.generate-rainbows(@max);
+.generate-rainbows(@i) when (@i <= @max) {
+  .rainbow-@{i} {
+    @color: darken(spin(@syntax-color-keyword, @i * @step), 100 * floor(@i * @step / 360) / @spins);
+    color: @color;
+  }
+  .generate-rainbows(@i + 1);
+}
+
+.generate-rainbows(1);
